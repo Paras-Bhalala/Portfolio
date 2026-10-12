@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-todo" width="35" height="35" patternUnits="userSpaceOnUse">
+      <path d="M 35 0 L 0 0 0 35" fill="none" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#141712"/>
+  <rect width="100%" height="100%" fill="url(#grid-todo)" stroke="#7CFF6B" stroke-opacity="0.15"/>
+  
+  <!-- Frame corners -->
+  <path d="M 20 40 L 20 20 L 40 20 M 760 20 L 780 20 L 780 40 M 780 460 L 780 480 L 760 480 M 40 480 L 20 480 L 20 460" 
+        fill="none" stroke="#7CFF6B" stroke-width="2" stroke-linecap="square"/>
+        
+  <!-- Interactive checklist terminal -->
+  <rect x="120" y="110" width="560" height="310" fill="#0B0D0A" stroke="#7CFF6B" stroke-width="1.5" opacity="0.9"/>
+  
+  <!-- Terminal title bar -->
+  <rect x="120" y="110" width="560" height="35" fill="#1C2419" stroke="#7CFF6B" stroke-width="1"/>
+  <circle cx="145" cy="127" r="5" fill="#FF4D1C"/>
+  <circle cx="165" cy="127" r="5" fill="#ECC94B"/>
+  <circle cx="185" cy="127" r="5" fill="#7CFF6B"/>
+  <text x="210" y="132" fill="#7CFF6B" font-family="monospace" font-size="11" letter-spacing="1">TASK_MANAGER_V1.0 // LOCAL_STORAGE_ONLINE</text>
+
+  <!-- Input simulator -->
+  <rect x="150" y="165" width="500" height="36" fill="#141712" stroke="#7CFF6B" stroke-dasharray="3 3"/>
+  <text x="170" y="188" fill="#7CFF6B" font-family="monospace" font-size="12">> INITIALIZE SYSTEM UPDATE_</text>
+
+  <!-- Checklist rows -->
+  <rect x="150" y="220" width="20" height="20" fill="none" stroke="#7CFF6B" stroke-width="1.5"/>
+  <path d="M 154 230 L 160 236 L 168 224" fill="none" stroke="#7CFF6B" stroke-width="2"/>
+  <text x="185" y="235" fill="#E6EFE4" font-family="monospace" font-size="13" text-decoration="line-through" opacity="0.7">VERIFY NCC CADET PROTOCOLS [PERSISTED: TRUE]</text>
+
+  <rect x="150" y="260" width="20" height="20" fill="none" stroke="#7CFF6B" stroke-width="1.5"/>
+  <path d="M 154 270 L 160 276 L 168 264" fill="none" stroke="#7CFF6B" stroke-width="2"/>
+  <text x="185" y="275" fill="#E6EFE4" font-family="monospace" font-size="13" text-decoration="line-through" opacity="0.7">EXECUTE DOM EVENT LISTENERS [PERSISTED: TRUE]</text>
+
+  <rect x="150" y="300" width="20" height="20" fill="none" stroke="#FF4D1C" stroke-width="1.5"/>
+  <text x="185" y="315" fill="#FF4D1C" font-family="monospace" font-size="13">DISPATCH RESUME DOSSIER TO HIRING AGENT</text>
+
+  <rect x="150" y="340" width="20" height="20" fill="none" stroke="#7CFF6B" stroke-width="1.5"/>
+  <text x="185" y="355" fill="#A0AEA0" font-family="monospace" font-size="13">COMPILE FRONTEND INTELLIGENCE REPORT</text>
+  
+  <text x="50" y="60" fill="#7CFF6B" font-family="monospace" font-size="14" letter-spacing="3" font-weight="bold">OPERATION // TASK-HUD</text>
+  <text x="50" y="80" fill="#A0AEA0" font-family="monospace" font-size="11" letter-spacing="1">PROJECT: INTERACTIVE TODO (VANILLA JS + LOCAL STORAGE)</text>
+  <text x="750" y="60" text-anchor="end" fill="#7CFF6B" font-family="monospace" font-size="12" letter-spacing="2">SYS-CODE: DOM-STR-03</text>
+  <text x="750" y="460" text-anchor="end" fill="#7CFF6B" font-family="monospace" font-size="11">STATUS: MISSION COMPLETE</text>
+</svg>
