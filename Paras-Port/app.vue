@@ -1,5 +1,4 @@
 <script setup>
-<meta name="google-site-verification" content="ekc2NroT7hyYJnv92fLjkceBHEgSSXdBad7dU2rj0YA" />
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
