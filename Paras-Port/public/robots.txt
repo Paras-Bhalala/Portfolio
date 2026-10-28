@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap : https://paras-bhalala.vercel.app/paras-bhalala-vercel-app-sitemap.xml
