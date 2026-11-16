@@ -56,16 +56,9 @@ onBeforeUnmount(() => {
 <template>
   <component 
     :is="as" 
-    class="scramble-text"
+    class="inline-block [will-change:contents]"
     @mouseenter="triggerOnHover ? triggerScramble() : null"
   >
     {{ displayText }}
   </component>
 </template>
-
-<style scoped>
-.scramble-text {
-  display: inline-block;
-  will-change: contents;
-}
-</style>

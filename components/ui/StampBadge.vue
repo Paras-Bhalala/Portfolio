@@ -27,7 +27,3 @@ defineProps({
     {{ text }}
   </span>
 </template>
-
-<style scoped>
-/* Inherits base .rubber-stamp from main.css */
-</style>

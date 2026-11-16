@@ -2,7 +2,6 @@
 import { profile } from '~/data/portfolio'
 import { useIstClock } from '~/composables/useIstClock'
 
-const isPaletteOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const colorMode = useColorMode()
 const { timeString } = useIstClock()
@@ -10,102 +9,79 @@ const { timeString } = useIstClock()
 const navSections = [
   { id: 'about', num: '01', label: 'PROFILE' },
   { id: 'experience', num: '02', label: 'SERVICE' },
-  { id: 'skills', num: '03', label: 'ARSENAL' },
-  { id: 'education', num: '04', label: 'TRAINING' },
-  { id: 'projects', num: '05', label: 'MISSIONS' }
+  { id: 'skills', num: '03', label: 'SKILLS' },
+  { id: 'education', num: '04', label: 'EDUCATION' },
+  { id: 'projects', num: '05', label: 'PROJECTS' }
 ]
 
 const toggleTheme = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 }
-
-const handleGlobalKeydown = (e) => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-    e.preventDefault()
-    isPaletteOpen.value = !isPaletteOpen.value
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', handleGlobalKeydown)
-})
-
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('keydown', handleGlobalKeydown)
-  }
-})
 </script>
 
 <template>
-  <header class="app-header">
-    <div class="dossier-container app-header__inner">
+  <header class="fixed top-0 left-0 w-full z-[1000] bg-bg-overlay backdrop-blur-md border-b border-border-subtle transition-colors duration-250">
+    <div class="dossier-container h-16 flex items-center justify-between">
       <!-- Logo -->
-      <a href="#hero" class="app-header__logo" data-cursor-label="RETURN">
-        <span class="app-header__logo-name">PARAS BHALALA</span>
+      <a href="#hero" class="flex items-center gap-2 no-underline text-ink-primary" data-cursor-label="RETURN">
+        <span class="font-display text-xl tracking-[0.05em]">PARAS BHALALA</span>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="app-header__nav" aria-label="Dossier Files Navigation">
+      <nav class="hidden min-[960px]:flex items-center gap-7" aria-label="Dossier Files Navigation">
         <a 
           v-for="item in navSections" 
           :key="item.id"
           :href="`#${item.id}`"
-          class="app-header__nav-link"
+          class="inline-flex items-center gap-1.5 no-underline font-mono text-xs tracking-[0.1em] text-ink-secondary hover:text-ink-primary transition-colors duration-150 py-1"
           data-cursor-label="VIEW FILE"
         >
-          <span class="app-header__nav-num">{{ item.num }}</span>
+          <span class="text-accent-signal font-bold">{{ item.num }}</span>
           <ScrambleText :text="item.label" :trigger-on-hover="true" />
         </a>
       </nav>
 
       <!-- Right Controls -->
-      <div class="app-header__controls">
-        <!-- Command Palette Trigger -->
-        <button 
-          type="button" 
-          class="app-header__cmd-btn"
-          aria-label="Open command palette"
-          data-cursor-label="CTRL+K"
-          @click="isPaletteOpen = true"
-        >
-          <span class="cmd-icon">⌘</span>
-          <span class="cmd-label">CTRL+K</span>
-        </button>
-
+      <div class="flex items-center gap-3">
         <!-- Night-Ops / Light Mode Toggle -->
         <button 
           type="button" 
-          class="app-header__theme-btn"
+          class="inline-flex items-center bg-bg-surface border border-border-subtle hover:border-accent-phosphor text-ink-primary font-mono text-[0.6875rem] tracking-[0.1em] px-2.5 py-1.5 rounded-[2px] cursor-pointer transition-all duration-150"
           :aria-label="`Switch to ${colorMode.value === 'dark' ? 'Light Paper' : 'Night-Ops Phosphor'} theme`"
           data-cursor-label="THEME"
           @click="toggleTheme"
         >
-          <span v-if="colorMode.value === 'dark'" class="theme-icon">◐ NIGHT-OPS</span>
-          <span v-else class="theme-icon">◑ PAPER</span>
+          <span v-if="colorMode.value === 'dark'">◐ NIGHT-OPS</span>
+          <span v-else>◑ PAPER</span>
         </button>
 
         <!-- Resume CTA -->
         <a 
           :href="profile.resumeUrl" 
           target="_blank"
-          class="tactical-btn app-header__resume-btn"
+          class="tactical-btn hidden sm:inline-flex px-3.5 py-2 text-xs"
           data-cursor-label="RESUME"
         >
           <span>RESUME</span>
-          <span class="btn-arrow">↓</span>
+          <span>↓</span>
         </a>
 
         <!-- Mobile Menu Hamburger Button -->
         <button 
           type="button"
-          class="app-header__hamburger"
+          class="flex min-[960px]:hidden flex-col justify-center items-center w-[38px] h-[38px] bg-bg-surface border border-border-strong cursor-pointer p-0 gap-1.5"
           :aria-expanded="isMobileMenuOpen"
           aria-label="Toggle mobile directory"
           @click="isMobileMenuOpen = !isMobileMenuOpen"
         >
-          <span class="hamburger-bar" :class="{ 'hamburger-bar--open-1': isMobileMenuOpen }"></span>
-          <span class="hamburger-bar" :class="{ 'hamburger-bar--open-2': isMobileMenuOpen }"></span>
+          <span 
+            class="w-5 h-0.5 bg-ink-primary transition-all duration-200" 
+            :class="{ 'translate-y-1 rotate-45': isMobileMenuOpen }"
+          ></span>
+          <span 
+            class="w-5 h-0.5 bg-ink-primary transition-all duration-200" 
+            :class="{ '-translate-y-1 -rotate-45': isMobileMenuOpen }"
+          ></span>
         </button>
       </div>
     </div>
@@ -113,18 +89,18 @@ onBeforeUnmount(() => {
     <!-- Mobile Tactical Navigation Overlay -->
     <div 
       v-if="isMobileMenuOpen" 
-      class="mobile-drawer"
+      class="fixed top-16 left-0 w-screen h-[calc(100vh-64px)] bg-bg-primary border-t border-border-strong p-6 flex flex-col justify-between overflow-y-auto z-[999]"
       role="dialog"
       aria-modal="true"
     >
-      <div class="mobile-drawer__header">
-        <div class="mobile-drawer__telemetry font-mono">
+      <div class="flex justify-between items-center border-b border-dashed border-border-dash pb-4">
+        <div class="flex flex-col text-[0.6875rem] text-ink-muted font-mono">
           <span>TIME: {{ timeString }}</span>
           <span>COORD: {{ profile.coordinates }}</span>
         </div>
         <button 
           type="button" 
-          class="mobile-drawer__close"
+          class="bg-transparent border-none font-mono text-xs text-accent-signal font-bold cursor-pointer"
           aria-label="Close directory"
           @click="isMobileMenuOpen = false"
         >
@@ -132,21 +108,21 @@ onBeforeUnmount(() => {
         </button>
       </div>
 
-      <nav class="mobile-drawer__nav">
+      <nav class="flex flex-col gap-4 my-8">
         <a 
           v-for="item in navSections" 
           :key="item.id"
           :href="`#${item.id}`"
-          class="mobile-drawer__link"
+          class="flex items-center justify-between p-4 bg-bg-surface border border-border-subtle hover:border-accent-signal text-ink-primary no-underline transition-colors duration-150"
           @click="isMobileMenuOpen = false"
         >
-          <span class="mobile-drawer__num font-mono">FILE {{ item.num }}</span>
-          <span class="mobile-drawer__title font-display">{{ item.label }}</span>
-          <span class="mobile-drawer__arrow">→</span>
+          <span class="text-xs text-accent-signal font-bold font-mono">FILE {{ item.num }}</span>
+          <span class="text-2xl flex-1 ml-4 font-display">{{ item.label }}</span>
+          <span class="font-mono text-accent-signal">→</span>
         </a>
       </nav>
 
-      <div class="mobile-drawer__actions">
+      <div class="flex flex-col gap-3 pt-4 border-t border-dashed border-border-dash">
         <button 
           type="button" 
           class="tactical-btn tactical-btn--ghost w-full"
@@ -164,285 +140,5 @@ onBeforeUnmount(() => {
         </a>
       </div>
     </div>
-
-    <!-- Command Palette Dialog -->
-    <CommandPalette 
-      :is-open="isPaletteOpen" 
-      @close="isPaletteOpen = false" 
-    />
   </header>
 </template>
-
-<style scoped>
-.app-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: var(--bg-overlay);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-subtle);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.app-header__inner {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.app-header__logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--ink-primary);
-}
-
-.app-header__logo-tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent-signal);
-  letter-spacing: 0.15em;
-  font-weight: 700;
-}
-
-.app-header__logo-name {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: 0.05em;
-}
-
-.app-header__nav {
-  display: none;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-@media (min-width: 960px) {
-  .app-header__nav {
-    display: flex;
-  }
-}
-
-.app-header__nav-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  text-decoration: none;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--ink-secondary);
-  transition: color 0.15s ease;
-  padding: 0.25rem 0;
-}
-
-.app-header__nav-num {
-  color: var(--accent-signal);
-  font-weight: 700;
-}
-
-.app-header__nav-link:hover {
-  color: var(--ink-primary);
-}
-
-.app-header__controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.app-header__cmd-btn {
-  display: none;
-  align-items: center;
-  gap: 0.35rem;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-strong);
-  color: var(--ink-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  padding: 0.4rem 0.65rem;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-@media (min-width: 768px) {
-  .app-header__cmd-btn {
-    display: inline-flex;
-  }
-}
-
-.app-header__cmd-btn:hover {
-  border-color: var(--accent-signal);
-  color: var(--ink-primary);
-}
-
-.app-header__theme-btn {
-  display: inline-flex;
-  align-items: center;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--ink-primary);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  padding: 0.4rem 0.65rem;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.app-header__theme-btn:hover {
-  border-color: var(--accent-phosphor);
-}
-
-.app-header__resume-btn {
-  display: none;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.75rem;
-}
-
-@media (min-width: 640px) {
-  .app-header__resume-btn {
-    display: inline-flex;
-  }
-}
-
-.app-header__hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 38px;
-  height: 38px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-strong);
-  cursor: pointer;
-  padding: 0;
-  gap: 6px;
-}
-
-@media (min-width: 960px) {
-  .app-header__hamburger {
-    display: none;
-  }
-}
-
-.hamburger-bar {
-  width: 20px;
-  height: 2px;
-  background-color: var(--ink-primary);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.hamburger-bar--open-1 {
-  transform: translateY(4px) rotate(45deg);
-}
-
-.hamburger-bar--open-2 {
-  transform: translateY(-4px) rotate(-45deg);
-}
-
-/* Mobile Drawer */
-.mobile-drawer {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 64px);
-  background-color: var(--bg-primary);
-  border-top: 1px solid var(--border-strong);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto;
-  z-index: 999;
-}
-
-.mobile-drawer__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px dashed var(--border-dash);
-  padding-bottom: 1rem;
-}
-
-.mobile-drawer__telemetry {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.6875rem;
-  color: var(--ink-muted);
-}
-
-.mobile-drawer__close {
-  background: none;
-  border: none;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent-signal);
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.mobile-drawer__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.mobile-drawer__link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  text-decoration: none;
-  color: var(--ink-primary);
-  transition: border-color 0.15s ease;
-}
-
-.mobile-drawer__link:hover {
-  border-color: var(--accent-signal);
-}
-
-.mobile-drawer__num {
-  font-size: 0.75rem;
-  color: var(--accent-signal);
-  font-weight: 700;
-}
-
-.mobile-drawer__title {
-  font-size: 1.5rem;
-  flex: 1;
-  margin-left: 1rem;
-}
-
-.mobile-drawer__arrow {
-  font-family: var(--font-mono);
-  color: var(--accent-signal);
-}
-
-.mobile-drawer__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--border-dash);
-}
-
-.w-full {
-  width: 100%;
-}
-
-.text-center {
-  text-align: center;
-}
-</style>

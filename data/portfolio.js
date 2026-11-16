@@ -48,8 +48,8 @@ export const profile = {
     "TAILWIND CSS",
     "DIRECTUS HEADLESS CMS",
     "SAINIK SCHOOL BALACHADI",
-    "ACTIVE DUTY // 7SPAN",
-    "AHMEDABAD 23.02°N 72.57°E"
+    "7SPAN",
+    "AHMEDABAD"
   ]
 };
 
@@ -155,6 +155,7 @@ export const education = [
     institution: "GLS University",
     location: "Ahmedabad",
     period: "2024 - 2026",
+    level: "POSTGRADUATE",
     metricLabel: "Academic Merit",
     metricValue: "8.64 / 10.0 CGPA",
     achievements: [
@@ -162,13 +163,14 @@ export const education = [
       "Secured 1st Rank in Sem 3, 2nd Rank in Sem 2, 3rd Rank in Sem 1"
     ],
     stamps: ["COMPLETED", "TOP RANK", "DISTINCTION"],
-    callsign: "SEC-01 // POSTGRADUATE"
+    callsign: "POSTGRADUATE"
   },
   {
     degree: "B.Sc in Information Technology",
     institution: "Saurashtra University",
     location: "Rajkot",
     period: "2021 - 2024",
+    level: "UNDERGRADUATE",
     metricLabel: "Final CGPA",
     metricValue: "8.23 / 10.0",
     achievements: [
@@ -176,13 +178,14 @@ export const education = [
       "Rigorous foundations in algorithms, databases, and software design"
     ],
     stamps: ["FIRST CLASS"],
-    callsign: "SEC-02 // UNDERGRADUATE"
+    callsign: "UNDERGRADUATE"
   },
   {
     degree: "HSC - CBSE Board",
     institution: "Sainik School Balachadi",
     location: "Jamnagar",
     period: "2020 - 2021",
+    level: "HIGHER SECONDARY (HSC)",
     metricLabel: "CBSE Score",
     metricValue: "72%",
     achievements: [
@@ -190,13 +193,14 @@ export const education = [
       "Leadership training, discipline, and endurance drills"
     ],
     stamps: ["NCC 'B' CERT", "CADET"],
-    callsign: "SEC-03 // DEFENCE PREP"
+    callsign: "CBSE XII"
   },
   {
     degree: "SSC - CBSE Board",
     institution: "Sainik School Balachadi",
     location: "Jamnagar",
     period: "2018 - 2019",
+    level: "SECONDARY (SSC)",
     metricLabel: "CBSE Score",
     metricValue: "84%",
     achievements: [
@@ -204,24 +208,24 @@ export const education = [
       "Honors in academics and military training"
     ],
     stamps: ["NCC 'A' CERT", "HONOR ROLL"],
-    callsign: "SEC-04 // JUNIOR CADET"
+    callsign: "CBSE X"
   }
 ];
 
 export const projects = [
   {
     id: "d2c-guru",
-    callsign: "MSN-01 // BRAND-INTEL",
+    callsign: "WEB APP // BRAND DIRECTORY",
     name: "D2C Guru",
-    status: "OPERATIONAL",
+    status: "PRODUCTION",
     statusType: "success",
     summary: "D2C brands listing platform showcasing brand intelligence, media galleries, tag classifications, and category-based filtering.",
-    stack: ["NUXT", "Vue", "Directus", "Tailwind", "JS"],
+    stack: ["Nuxt 3", "Vue 3", "Directus CMS", "Tailwind CSS", "JavaScript"],
     objectives: [
       "Comprehensive D2C brand directory with high-res media & brand profiles",
-      "Dynamic multi-category taxonomies & tag filtering system",
-      "Faceted instant search across industry verticals and price tiers",
-      "Direct brand exploration with organized metadata and product lines"
+      "Dynamic multi-category taxonomies & faceted tag filtering system",
+      "Instant search across industry verticals and product price tiers",
+      "Headless CMS integration via Directus REST API"
     ],
     debriefUrl: "https://github.com/Paras-Bhalala",
     graphicCode: "D2C-DIR-01",
@@ -229,14 +233,14 @@ export const projects = [
   },
   {
     id: "used-cars-platform",
-    callsign: "MSN-02 // AUTO-VAULT",
+    callsign: "MARKETPLACE // AUTOMOTIVE",
     name: "Used Cars Listing Platform",
-    status: "OPERATIONAL",
+    status: "PRODUCTION",
     statusType: "success",
     summary: "Pre-owned vehicle marketplace showcasing comprehensive vehicle specs, seller inquiries, and instant test drive booking.",
-    stack: ["NUXT", "Vue", "JS", "Tailwind"],
+    stack: ["Nuxt 3", "Vue 3", "JavaScript", "Tailwind CSS"],
     objectives: [
-      "Detailed specs matrix: engine type, color, body style, fuel type & mileage",
+      "Detailed specs matrix: engine, transmission, body style & mileage",
       "Direct 'Contact Seller' engagement channel with integrated dispatch",
       "Instant 'Book Test Drive' appointment scheduling workflow",
       "Multi-parameter vehicle filtering by transmission, fuel, and budget"
@@ -247,17 +251,17 @@ export const projects = [
   },
   {
     id: "ani-help",
-    callsign: "MSN-03 // RESCUE-NET",
+    callsign: "MOBILE APP // EMERGENCY RESCUE",
     name: "Ani Help",
-    status: "OPERATIONAL",
+    status: "COMPLETED",
     statusType: "success",
-    summary: "Flutter-based mobile application connecting injured animals with nearby rescue NGOs.",
-    stack: ["Flutter", "Django API", "MySQL"],
+    summary: "Flutter-based mobile application connecting injured animals with nearby rescue NGOs and rapid aid responders.",
+    stack: ["Flutter", "Django REST API", "MySQL", "Dart"],
     objectives: [
-      "Built responsive UI using Flutter",
-      "Integrated Django REST API",
-      "MySQL structured database",
-      "NGO filtering & emergency user dispatch system"
+      "Cross-platform mobile UI designed for rapid incident reporting",
+      "Integrated Django REST API backend with secure auth",
+      "MySQL structured database schema for incidents and NGOs",
+      "Geo-filtering for nearby rescue NGOs and responders"
     ],
     debriefUrl: "https://github.com/Paras-Bhalala",
     graphicCode: "FLT-DJG-03",
@@ -265,17 +269,17 @@ export const projects = [
   },
   {
     id: "responsive-blog",
-    callsign: "MSN-04 // CHRONICLE",
+    callsign: "WEB PORTAL // CONTENT PLATFORM",
     name: "Responsive Blog Website",
-    status: "ARCHIVED",
+    status: "COMPLETED",
     statusType: "neutral",
-    summary: "Multi-page blog platform with clean UI and structured category navigation.",
-    stack: ["Bootstrap", "HTML and CSS", "JS"],
+    summary: "Multi-page blog platform with clean typography, responsive layout, and structured category navigation.",
+    stack: ["Bootstrap 5", "HTML5 & CSS3", "JavaScript"],
     objectives: [
-      "Responsive grid layout across all screen breakpoints",
-      "Category-based article navigation & reading system",
-      "Clean typography and structured layout",
-      "Mobile-optimized performance"
+      "Responsive mobile-first layout across all display breakpoints",
+      "Category-based article navigation & reading experience",
+      "Clean semantic typography with accessibility compliance",
+      "Lightweight fast-loading frontend architecture"
     ],
     debriefUrl: "https://github.com/Paras-Bhalala",
     graphicCode: "WEB-BST-04",

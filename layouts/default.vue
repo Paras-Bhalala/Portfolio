@@ -1,5 +1,5 @@
 <template>
-  <div class="dossier-shell">
+  <div class="min-h-screen relative bg-bg-primary text-ink-primary flex flex-col">
     <!-- Film Grain Overlay -->
     <GrainOverlay />
 
@@ -12,7 +12,7 @@
     <AppHeader />
 
     <!-- Main Dossier Content -->
-    <main id="main-content">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
 
@@ -20,19 +20,3 @@
     <AppFooter />
   </div>
 </template>
-
-<style>
-/* Global shell styles */
-.dossier-shell {
-  min-height: 100vh;
-  position: relative;
-  background-color: var(--bg-primary);
-  color: var(--ink-primary);
-  display: flex;
-  flex-direction: column;
-}
-
-#main-content {
-  flex: 1;
-}
-</style>

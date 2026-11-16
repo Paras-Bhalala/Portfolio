@@ -7,35 +7,26 @@ import { profile } from '~/data/portfolio'
     <div class="dossier-container">
       <!-- Section Dossier Header -->
       <div class="dossier-section__header">
-        <div>
-          <div class="dossier-section__meta">
-            <span>FILE 01 // DOSSIER</span>
-            <span>● DECLASSIFIED</span>
-          </div>
-          <h2 class="dossier-section__title">
-            ENGINEER <span class="text-accent">PROFILE</span>
-          </h2>
-        </div>
-        <div class="dossier-section__tag">
-          RECORD ID: {{ profile.callsign }}
-        </div>
+        <h2 class="dossier-section__title">
+          ENGINEER <span class="text-accent-signal">PROFILE</span>
+        </h2>
       </div>
 
       <!-- Main Profile Layout -->
-      <div class="about-grid">
+      <div class="grid grid-cols-1 min-[960px]:grid-cols-[300px_1fr] gap-8 min-[960px]:gap-10 items-center">
         <!-- Left: ID Badge Physical Dossier Frame -->
-        <div class="about-grid__badge-col">
-          <div class="id-badge">
-            <div class="id-badge__clip" aria-hidden="true">
-              <div class="id-badge__slot"></div>
+        <div class="flex justify-center">
+          <div class="relative bg-bg-surface-elevated border-2 border-ink-primary p-3 sm:p-4 pb-4 shadow-badge flex flex-col gap-3 max-w-[320px] mx-auto group">
+            <div class="w-12 h-3 bg-ink-primary mx-auto -mb-2.5 rounded-[2px] relative -top-5.5 shadow-[0_2px_4px_rgba(0,0,0,0.2)]" aria-hidden="true">
+              <div class="w-8 h-1 bg-bg-primary mx-auto mt-1 rounded-[2px]"></div>
             </div>
 
             <!-- Profile Photo: Black shade default, original on hover -->
-            <div class="id-badge__photo-wrap">
+            <div class="relative w-full aspect-[4/5] overflow-hidden border border-border-strong bg-black cursor-pointer">
               <img 
                 :src="profile.photoUrl" 
                 :alt="profile.name" 
-                class="id-badge__photo"
+                class="w-full h-full object-cover grayscale contrast-110 brightness-95 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-102 transition-all duration-350"
                 loading="lazy"
                 width="280"
                 height="350"
@@ -43,63 +34,63 @@ import { profile } from '~/data/portfolio'
             </div>
 
             <!-- Stamped Qualification -->
-            <div class="id-badge__stamp-row">
+            <div class="flex justify-around py-1.5">
               <StampBadge text="NCC CERTIFIED" variant="red" :angle="-4" />
               <StampBadge text="TOP RANK" variant="signal" :angle="3" />
             </div>
 
             <!-- ID Metadata -->
-            <div class="id-badge__meta font-mono">
-              <div class="id-badge__meta-row">
-                <span class="meta-label">NAME:</span>
-                <span class="meta-val">{{ profile.name }}</span>
+            <div class="flex flex-col gap-1.5 text-xs border-t border-dashed border-border-dash pt-2 font-mono">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-ink-muted">NAME:</span>
+                <span class="text-ink-primary font-bold">{{ profile.name }}</span>
               </div>
-              <div class="id-badge__meta-row">
-                <span class="meta-label">ROLE:</span>
-                <span class="meta-val">ASST. SOFTWARE ENGINEER</span>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-ink-muted">ROLE:</span>
+                <span class="text-ink-primary font-bold">ASST. SOFTWARE ENGINEER</span>
               </div>
-              <div class="id-badge__meta-row">
-                <span class="meta-label">BASE:</span>
-                <span class="meta-val">{{ profile.location }}</span>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-ink-muted">BASE:</span>
+                <span class="text-ink-primary font-bold">{{ profile.location }}</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Right: Classified Service Bio -->
-        <div class="about-grid__content-col">
-          <div class="tactical-frame bio-dossier">
-            <h3 class="bio-dossier__heading font-display">
+        <div>
+          <div class="tactical-frame bg-bg-surface p-4 sm:p-6 md:p-7">
+            <h3 class="font-display text-[clamp(1.45rem,2.4vw,2.15rem)] leading-[1.05] tracking-[0.02em] text-ink-primary mb-3.5">
               DISCIPLINED ENGINEERING FOR COMPLEX DIGITAL SYSTEMS
             </h3>
 
-            <div class="bio-dossier__body font-body">
+            <div class="flex flex-col gap-3 mb-5">
               <p 
                 v-for="(paragraph, index) in profile.bio" 
                 :key="index"
-                class="bio-paragraph"
+                class="font-body text-[0.95rem] sm:text-[1.0625rem] leading-[1.6] sm:leading-[1.7] tracking-[-0.01em] text-ink-secondary"
               >
                 {{ paragraph }}
               </p>
             </div>
 
             <!-- Key Intel Grid -->
-            <div class="bio-intel-grid font-mono">
-              <div class="intel-block">
-                <span class="intel-label">ACADEMIC INSTITUTION:</span>
-                <span class="intel-val">GLS UNIVERSITY, AHMEDABAD</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 sm:px-5 sm:py-3.5 bg-bg-surface-elevated border border-dashed border-border-dash mb-0 font-mono">
+              <div class="flex flex-col gap-1">
+                <span class="text-[0.6875rem] text-ink-muted tracking-[0.1em]">ACADEMIC INSTITUTION:</span>
+                <span class="text-[0.8125rem] font-bold text-ink-primary">GLS UNIVERSITY, AHMEDABAD</span>
               </div>
-              <div class="intel-block">
-                <span class="intel-label">DEGREE:</span>
-                <span class="intel-val">M.SC IN INFORMATION TECHNOLOGY (COMPLETED)</span>
+              <div class="flex flex-col gap-1">
+                <span class="text-[0.6875rem] text-ink-muted tracking-[0.1em]">DEGREE:</span>
+                <span class="text-[0.8125rem] font-bold text-ink-primary">M.SC IN INFORMATION TECHNOLOGY (COMPLETED)</span>
               </div>
-              <div class="intel-block">
-                <span class="intel-label">FOUNDATIONAL TRAINING:</span>
-                <span class="intel-val">SAINIK SCHOOL BALACHADI</span>
+              <div class="flex flex-col gap-1">
+                <span class="text-[0.6875rem] text-ink-muted tracking-[0.1em]">FOUNDATIONAL TRAINING:</span>
+                <span class="text-[0.8125rem] font-bold text-ink-primary">SAINIK SCHOOL BALACHADI</span>
               </div>
-              <div class="intel-block">
-                <span class="intel-label">CORPS CLEARANCE:</span>
-                <span class="intel-val">NCC 'A' & 'B' CERTIFICATES</span>
+              <div class="flex flex-col gap-1">
+                <span class="text-[0.6875rem] text-ink-muted tracking-[0.1em]">CORPS CLEARANCE:</span>
+                <span class="text-[0.8125rem] font-bold text-ink-primary">NCC 'A' & 'B' CERTIFICATES</span>
               </div>
             </div>
           </div>
@@ -108,155 +99,3 @@ import { profile } from '~/data/portfolio'
     </div>
   </section>
 </template>
-
-<style scoped>
-.text-accent {
-  color: var(--accent-signal);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-@media (min-width: 960px) {
-  .about-grid {
-    grid-template-columns: 300px 1fr;
-    gap: 2.5rem;
-  }
-}
-
-.about-grid__badge-col {
-  display: flex;
-  justify-content: center;
-}
-
-.id-badge__stamp-row {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.35rem 0;
-}
-
-.meta-label {
-  color: var(--ink-muted);
-}
-
-.meta-val {
-  color: var(--ink-primary);
-  font-weight: 700;
-}
-
-.id-badge__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  border-top: 1px dashed var(--border-dash);
-  padding-top: 0.5rem;
-}
-
-.id-badge__meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Bio Dossier Column */
-.bio-dossier {
-  background-color: var(--bg-surface);
-  padding: 1.5rem 1.75rem;
-}
-
-.bio-dossier__status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  color: var(--accent-signal);
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--accent-signal);
-  border-radius: 50%;
-}
-
-.bio-dossier__heading {
-  font-size: clamp(1.5rem, 2.4vw, 2.15rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  color: var(--ink-primary);
-  margin-bottom: 0.85rem;
-}
-
-.bio-dossier__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.bio-paragraph {
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  letter-spacing: -0.01em;
-  color: var(--ink-secondary);
-}
-
-.bio-intel-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  padding: 0.85rem 1.25rem;
-  background-color: var(--bg-surface-elevated);
-  border: 1px dashed var(--border-dash);
-  margin-bottom: 0;
-}
-
-@media (min-width: 640px) {
-  .bio-intel-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.intel-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.intel-label {
-  font-size: 0.6875rem;
-  color: var(--ink-muted);
-  letter-spacing: 0.1em;
-}
-
-.intel-val {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--ink-primary);
-}
-
-@media (max-width: 640px) {
-  .bio-dossier {
-    padding: 1.15rem 1rem;
-  }
-  .bio-intel-grid {
-    padding: 0.75rem 0.85rem;
-  }
-  .bio-dossier__heading {
-    font-size: 1.45rem;
-  }
-  .bio-paragraph {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-}
-</style>

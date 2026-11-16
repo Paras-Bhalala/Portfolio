@@ -63,135 +63,34 @@ onBeforeUnmount(() => {
 <template>
   <div 
     v-if="!isTouch && isVisible" 
-    class="custom-cursor"
-    :class="{ 'custom-cursor--hover': isHovering }"
+    class="fixed top-0 left-0 pointer-events-none z-[10000] flex items-center justify-center transition-[width,height,margin] duration-200 motion-reduce:hidden"
+    :class="isHovering ? 'w-12 h-12 -mt-6 -ml-6' : 'w-8 h-8 -mt-4 -ml-4'"
     :style="{
       transform: `translate3d(${cursorX}px, ${cursorY}px, 0)`
     }"
     aria-hidden="true"
   >
     <!-- Targeting Crosshair Ring -->
-    <div class="custom-cursor__ring"></div>
+    <div 
+      class="absolute inset-0 rounded-full transition-all duration-200 animate-radar-rotate"
+      :class="isHovering ? 'border border-solid border-accent-signal scale-115' : 'border border-dashed border-accent-phosphor'"
+    ></div>
     
     <!-- Reticle Corner Ticks -->
-    <div class="custom-cursor__cross custom-cursor__cross--top"></div>
-    <div class="custom-cursor__cross custom-cursor__cross--bottom"></div>
-    <div class="custom-cursor__cross custom-cursor__cross--left"></div>
-    <div class="custom-cursor__cross custom-cursor__cross--right"></div>
+    <div class="absolute -top-1 w-px h-1.5 bg-accent-phosphor"></div>
+    <div class="absolute -bottom-1 w-px h-1.5 bg-accent-phosphor"></div>
+    <div class="absolute -left-1 w-1.5 h-px bg-accent-phosphor"></div>
+    <div class="absolute -right-1 w-1.5 h-px bg-accent-phosphor"></div>
     
     <!-- Central Dot -->
-    <div class="custom-cursor__dot"></div>
+    <div 
+      class="w-1 h-1 bg-accent-signal rounded-full transition-transform duration-200"
+      :class="{ 'scale-150': isHovering }"
+    ></div>
 
     <!-- HUD readout badge on hover -->
-    <span v-if="targetLabel" class="custom-cursor__label">
+    <span v-if="targetLabel" class="absolute top-9 left-1/2 -translate-x-1/2 font-mono text-[0.625rem] tracking-[0.15em] bg-ink-primary text-ink-inverse px-1.5 py-0.5 rounded-[2px] whitespace-nowrap">
       {{ targetLabel }}
     </span>
   </div>
 </template>
-
-<style scoped>
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  margin-top: -16px;
-  margin-left: -16px;
-  pointer-events: none;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease;
-}
-
-.custom-cursor__ring {
-  position: absolute;
-  inset: 0;
-  border: 1px dashed var(--accent-phosphor);
-  border-radius: 50%;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  animation: radarRotate 12s linear infinite;
-}
-
-.custom-cursor__dot {
-  width: 4px;
-  height: 4px;
-  background-color: var(--accent-signal);
-  border-radius: 50%;
-}
-
-.custom-cursor__cross {
-  position: absolute;
-  background-color: var(--accent-phosphor);
-}
-
-.custom-cursor__cross--top {
-  top: -4px;
-  width: 1px;
-  height: 6px;
-}
-
-.custom-cursor__cross--bottom {
-  bottom: -4px;
-  width: 1px;
-  height: 6px;
-}
-
-.custom-cursor__cross--left {
-  left: -4px;
-  width: 6px;
-  height: 1px;
-}
-
-.custom-cursor__cross--right {
-  right: -4px;
-  width: 6px;
-  height: 1px;
-}
-
-.custom-cursor__label {
-  position: absolute;
-  top: 36px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.15em;
-  background-color: var(--ink-primary);
-  color: var(--ink-inverse);
-  padding: 2px 6px;
-  border-radius: 2px;
-  white-space: nowrap;
-}
-
-/* Hovering active element */
-.custom-cursor--hover {
-  width: 48px;
-  height: 48px;
-  margin-top: -24px;
-  margin-left: -24px;
-}
-
-.custom-cursor--hover .custom-cursor__ring {
-  border-style: solid;
-  border-color: var(--accent-signal);
-  transform: scale(1.15);
-}
-
-.custom-cursor--hover .custom-cursor__dot {
-  transform: scale(1.5);
-}
-
-@keyframes radarRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .custom-cursor {
-    display: none !important;
-  }
-}
-</style>
