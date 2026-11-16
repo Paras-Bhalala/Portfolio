@@ -44,24 +44,27 @@ defineProps({
 
 <style scoped>
 .marquee-ticker {
+  width: 100%;
   overflow: hidden;
-  user-select: none;
   background-color: var(--ink-primary);
   color: var(--ink-inverse);
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  white-space: nowrap;
+  padding: 0.625rem 0;
+  border-top: 1px solid var(--border-strong);
+  user-select: none;
 }
 
 .marquee-ticker__track {
   display: flex;
   width: max-content;
-  animation: scrollMarquee 26s linear infinite;
+  animation: marqueeScroll 32s linear infinite;
 }
 
 .marquee-ticker__track--reverse {
   animation-direction: reverse;
+}
+
+.marquee-ticker:hover .marquee-ticker__track {
+  animation-play-state: paused;
 }
 
 .marquee-ticker__group {
@@ -74,25 +77,21 @@ defineProps({
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .marquee-ticker__sep {
-  margin-left: 1.25rem;
+  margin: 0 1.25rem;
   color: var(--accent-signal);
-  font-size: 0.75rem;
+  font-size: 0.625rem;
 }
 
-@keyframes scrollMarquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-25%);
-  }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

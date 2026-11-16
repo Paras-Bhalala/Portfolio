@@ -44,8 +44,8 @@ import { profile } from '~/data/portfolio'
 
             <!-- Stamped Qualification -->
             <div class="id-badge__stamp-row">
-              <stamp-badge text="NCC CERTIFIED" variant="red" :angle="-4" />
-              <stamp-badge text="TOP RANK" variant="signal" :angle="3" />
+              <StampBadge text="NCC CERTIFIED" variant="red" :angle="-4" />
+              <StampBadge text="TOP RANK" variant="signal" :angle="3" />
             </div>
 
             <!-- ID Metadata -->
@@ -69,13 +69,6 @@ import { profile } from '~/data/portfolio'
         <!-- Right: Classified Service Bio -->
         <div class="about-grid__content-col">
           <div class="tactical-frame bio-dossier">
-            <!-- Status (Commented out: not currently looking for opportunities)
-            <div v-if="profile.status" class="bio-dossier__status font-mono">
-              <span>STATUS: {{ profile.status }}</span>
-              <span class="status-dot"></span>
-            </div>
-            -->
-
             <h3 class="bio-dossier__heading font-display">
               DISCIPLINED ENGINEERING FOR COMPLEX DIGITAL SYSTEMS
             </h3>

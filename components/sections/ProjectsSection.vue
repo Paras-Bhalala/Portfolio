@@ -69,7 +69,7 @@ onBeforeUnmount(() => {
     <!-- Horizontal Track for Missions -->
     <div class="projects-track-viewport">
       <div ref="trackRef" class="projects-track">
-        <project-briefing
+        <ProjectBriefing
           v-for="(project, index) in projects"
           :key="project.id"
           :project="project"
@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
         <div class="tactical-frame mission-outro-card">
           <div class="outro-header font-mono">
             <span>TRANSMISSION TERMINAL</span>
-            <stamp-badge text="CLASSIFIED" variant="red" :angle="2" />
+            <StampBadge text="CLASSIFIED" variant="red" :angle="2" />
           </div>
 
           <h3 class="outro-title font-display">MORE MISSIONS IN PROGRESS</h3>

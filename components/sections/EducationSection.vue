@@ -47,7 +47,7 @@ import { education } from '~/data/portfolio'
 
                 <!-- Stamps Row -->
                 <div class="timeline-card__stamps">
-                  <stamp-badge 
+                  <StampBadge 
                     v-for="(stamp, sIdx) in item.stamps" 
                     :key="sIdx"
                     :text="stamp"

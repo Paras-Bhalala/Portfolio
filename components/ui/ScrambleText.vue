@@ -1,5 +1,5 @@
 <script setup>
-import { useScramble } from '~/composables/use-scramble'
+import { useScramble } from '~/composables/useScramble'
 
 const props = defineProps({
   text: {

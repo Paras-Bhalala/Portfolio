@@ -41,7 +41,7 @@ import { experience } from '~/data/portfolio'
             </div>
 
             <div class="service-badge-block">
-              <stamp-badge :text="job.badge" variant="signal" :angle="1" />
+              <StampBadge :text="job.badge" variant="signal" :angle="1" />
               <span class="service-period font-mono">{{ job.period }}</span>
             </div>
           </div>

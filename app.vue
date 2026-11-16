@@ -51,45 +51,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="dossier-shell">
-    <!-- Film Grain Overlay -->
-    <grain-overlay />
-
-    <!-- Tactical Crosshair Targeting Cursor (Client Only, Desktop Only) -->
-    <ClientOnly>
-      <custom-cursor />
-    </ClientOnly>
-
-    <!-- Main Navigation Header -->
-    <app-header />
-
-    <!-- Main Dossier Content -->
-    <main id="main-content">
-      <hero-section />
-      <about-section />
-      <experience-section />
-      <skills-section />
-      <education-section />
-      <projects-section />
-    </main>
-
-    <!-- Dispatch & Comms Footer -->
-    <app-footer />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
-
-<style>
-/* Global shell styles */
-.dossier-shell {
-  min-height: 100vh;
-  position: relative;
-  background-color: var(--bg-primary);
-  color: var(--ink-primary);
-  display: flex;
-  flex-direction: column;
-}
-
-#main-content {
-  flex: 1;
-}
-</style>

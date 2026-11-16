@@ -1,5 +1,4 @@
-
- // https://nuxt.com/docs/api/configuration/nuxt-config
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
@@ -8,6 +7,17 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/fonts'
   ],
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false
+    }
+  ],
+
+  imports: {
+    dirs: ['data']
+  },
 
   colorMode: {
     preference: 'light',

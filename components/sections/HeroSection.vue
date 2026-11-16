@@ -1,6 +1,6 @@
 <script setup>
 import { profile } from '~/data/portfolio'
-import { useScramble } from '~/composables/use-scramble'
+import { useScramble } from '~/composables/useScramble'
 
 const { scramble } = useScramble()
 
@@ -33,7 +33,7 @@ onMounted(() => {
       <div class="hero-display">
         <div class="hero-classification font-mono">
           <span>CLASSIFICATION // UNRESTRICTED DOSSIER</span>
-          <stamp-badge text="ACTIVE DUTY - 7SPAN" variant="signal" :angle="2" />
+          <StampBadge text="ACTIVE DUTY - 7SPAN" variant="signal" :angle="2" />
         </div>
 
         <h1 class="hero-name font-display" aria-label="Paras Bhalala">
@@ -72,7 +72,7 @@ onMounted(() => {
     </div>
 
     <!-- Integrated Rotating Marquee -->
-    <marquee-ticker :items="profile.marqueeItems" />
+    <MarqueeTicker :items="profile.marqueeItems" />
   </section>
 </template>
 
@@ -132,6 +132,7 @@ onMounted(() => {
 @media (max-width: 768px) {
   .hud-corner { display: none; }
 }
+
 /* Display Stack */
 .hero-display {
   display: flex;

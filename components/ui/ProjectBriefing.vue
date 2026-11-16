@@ -30,7 +30,7 @@ defineProps({
       </div>
 
       <div class="briefing-status">
-        <stamp-badge 
+        <StampBadge 
           :text="project.status" 
           :variant="project.statusType === 'success' ? 'green' : 'signal'" 
           :angle="-2" 

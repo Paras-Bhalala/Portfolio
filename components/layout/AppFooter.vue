@@ -29,9 +29,6 @@ const scrollToTop = () => {
         <h2 class="giant-connect font-display">
           LET'S CONNECT
         </h2>
-        <!-- <p class="connect-subtext font-body">
-          Open for engineering opportunities, frontend architecture, and mission-critical collaborations.
-        </p> -->
         <p class="connect-subtext font-body">
           Open for technical discussions, frontend architecture, and mission-critical collaborations.
         </p>

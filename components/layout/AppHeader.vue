@@ -1,6 +1,6 @@
 <script setup>
 import { profile } from '~/data/portfolio'
-import { useIstClock } from '~/composables/use-ist-clock'
+import { useIstClock } from '~/composables/useIstClock'
 
 const isPaletteOpen = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
           data-cursor-label="VIEW FILE"
         >
           <span class="app-header__nav-num">{{ item.num }}</span>
-          <scramble-text :text="item.label" :trigger-on-hover="true" />
+          <ScrambleText :text="item.label" :trigger-on-hover="true" />
         </a>
       </nav>
 
@@ -166,7 +166,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Command Palette Dialog -->
-    <command-palette 
+    <CommandPalette 
       :is-open="isPaletteOpen" 
       @close="isPaletteOpen = false" 
     />
