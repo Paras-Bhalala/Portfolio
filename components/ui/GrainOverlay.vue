@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 w-screen h-screen pointer-events-none z-[9999] opacity-[var(--grain-opacity)] mix-blend-multiply dark:mix-blend-overlay overflow-hidden" aria-hidden="true">
+  <div class="fixed inset-0 w-full h-full pointer-events-none z-[9999] opacity-[var(--grain-opacity)] mix-blend-multiply dark:mix-blend-overlay overflow-hidden" aria-hidden="true">
     <svg class="w-full h-full absolute top-0 left-0 opacity-70" xmlns="http://www.w3.org/2000/svg">
       <filter id="noise-filter">
         <feTurbulence 

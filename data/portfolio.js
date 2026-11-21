@@ -24,7 +24,7 @@ export const profile = {
   socials: [
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/paras-bhalala-954b3b247/",
+      url: "https://www.linkedin.com/in/paras-bhalala/",
       handle: "paras-bhalala-954b3b247",
       callsign: "LNKD-01"
     },

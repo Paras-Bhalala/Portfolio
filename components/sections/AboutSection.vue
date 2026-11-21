@@ -34,7 +34,7 @@ import { profile } from '~/data/portfolio'
             </div>
 
             <!-- Stamped Qualification -->
-            <div class="flex justify-around py-1.5">
+            <div class="flex flex-wrap justify-center gap-2 py-1.5">
               <StampBadge text="NCC CERTIFIED" variant="red" :angle="-4" />
               <StampBadge text="TOP RANK" variant="signal" :angle="3" />
             </div>

@@ -47,6 +47,7 @@ import { projects } from '~/data/portfolio'
         <a 
           href="https://github.com/Paras-Bhalala" 
           target="_blank"
+          rel="noopener noreferrer me"
           class="tactical-btn py-3 px-6 whitespace-nowrap shrink-0 w-full sm:w-auto justify-center"
           data-cursor-label="GITHUB"
         >

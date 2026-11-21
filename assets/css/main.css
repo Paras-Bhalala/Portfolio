@@ -73,6 +73,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
@@ -85,6 +87,7 @@
     color: var(--ink-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    width: 100%;
     position: relative;
   }
 
@@ -189,6 +192,27 @@
   .tactical-btn--ghost {
     @apply bg-transparent text-ink-primary border-border-strong shadow-none hover:bg-ink-primary hover:text-ink-inverse hover:shadow-tactical-ghost hover:border-ink-primary;
   }
+}
+
+/* Custom Cursor: Hide default OS cursor on fine-pointer devices */
+@media (pointer: fine) {
+  *, *::before, *::after, html, body, a, button, input, [role="button"] {
+    cursor: none !important;
+  }
+}
+
+/* Tactical Feed Image Transition */
+.feed-fade-enter-active,
+.feed-fade-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.feed-fade-enter-from {
+  opacity: 0;
+  transform: scale(0.97);
+}
+.feed-fade-leave-to {
+  opacity: 0;
+  transform: scale(1.03);
 }
 
 /* Reduced Motion Safety */

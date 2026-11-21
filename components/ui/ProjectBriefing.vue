@@ -99,6 +99,7 @@ defineProps({
       <a 
         :href="project.debriefUrl" 
         target="_blank"
+        rel="noopener noreferrer"
         class="tactical-btn py-1.5 px-3.5 text-xs inline-flex items-center gap-1.5"
         data-cursor-label="GITHUB"
       >

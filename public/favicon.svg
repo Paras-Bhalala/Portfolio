@@ -1,8 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#0B0D0A"/>
-  <circle cx="32" cy="32" r="24" fill="none" stroke="#7CFF6B" stroke-width="2"/>
-  <circle cx="32" cy="32" r="14" fill="none" stroke="#FF4D1C" stroke-width="1.5"/>
-  <circle cx="32" cy="32" r="3" fill="#7CFF6B"/>
-  <line x1="8" y1="32" x2="56" y2="32" stroke="#7CFF6B" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <line x1="32" y1="8" x2="32" y2="56" stroke="#7CFF6B" stroke-width="1.5" stroke-dasharray="3 3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="pbGlow" cx="50%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#1B2217"/>
+      <stop offset="100%" stop-color="#090B08"/>
+    </radialGradient>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B40"/>
+      <stop offset="100%" stop-color="#FF3800"/>
+    </linearGradient>
+    <linearGradient id="bGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9BFF8E"/>
+      <stop offset="100%" stop-color="#65F552"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Base Frame -->
+  <rect width="64" height="64" rx="14" fill="url(#pbGlow)"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#FF4D1C" stroke-width="1.2" stroke-opacity="0.35"/>
+
+  <!-- Corner Accents -->
+  <circle cx="6" cy="6" r="1.5" fill="#7CFF6B" opacity="0.75"/>
+  <circle cx="58" cy="6" r="1.5" fill="#FF4D1C" opacity="0.75"/>
+  <circle cx="6" cy="58" r="1.5" fill="#FF4D1C" opacity="0.75"/>
+  <circle cx="58" cy="58" r="1.5" fill="#7CFF6B" opacity="0.75"/>
+
+  <!-- Letter P (Accent Signal Gradient) -->
+  <path 
+    fill="url(#pGrad)" 
+    fill-rule="evenodd" 
+    d="M 11 16 H 26 C 29.8 16 31.5 18.5 31.5 24.5 C 31.5 30.5 29.8 33 26 33 H 18.5 V 48 H 11 Z M 18.5 21.5 V 27.5 H 25 C 26.2 27.5 27 26.5 27 24.5 C 27 22.5 26.2 21.5 25 21.5 Z"
+  />
+
+  <!-- Letter B (Accent Phosphor Gradient) -->
+  <path 
+    fill="url(#bGrad)" 
+    fill-rule="evenodd" 
+    d="M 33 16 H 47 C 50.8 16 52.5 18.2 52.5 23.5 C 52.5 27.5 50.8 29.8 48 31 C 51.5 32.2 53 35 53 39.8 C 53 45.5 50.8 48 47 48 H 33 Z M 40 21.5 V 26.5 H 46 C 47.2 26.5 47.8 25.5 47.8 23.8 C 47.8 22.2 47.2 21.5 46 21.5 Z M 40 36.5 V 42.5 H 46.5 C 47.8 42.5 48.5 41.5 48.5 39.5 C 48.5 37.5 47.8 36.5 46.5 36.5 Z"
+  />
 </svg>
